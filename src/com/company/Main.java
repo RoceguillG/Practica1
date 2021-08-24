@@ -9,7 +9,8 @@ public class Main {
 
     public static void main(String[] args) {
         //menu inicial
-//inicio del menu
+        //inicio del menu
+
         Scanner entrada = new Scanner(System.in);
         boolean salir = false;
         int opcion;
@@ -34,15 +35,12 @@ public class Main {
                 switch (opcion) {
                     case 1:
                         System.out.println("INiCIO DeL JUeGO\n  ");
-                        //inicio del tablero vveamos como queda
-                        int[][] tablero = { {1, 2, 3, 4, 5, 6, 7, 8},
-                                            {2, 4, 3, 4, 4, 1, 1, 1},
-                                            {3, 0, 3, 4, 4, 1, 1, 1},
-                                            {4, 1, 3, 4, 4, 1, 1, 1},
-                                            {5, 1, 3, 4, 4, 1, 1, 1},
-                                            {6, 2, 3, 4, 4, 1, 1, 1},
-                                            {7, 3, 3, 3, 4, 1, 1, 1},
-                                            {8, 0, 0, 0, 4, 1, 1, 1}};
+                        //inicio del tablero veamos como queda
+
+
+                        String jugador= "@";
+                        String penalizacion="#";
+
                         String[][] tablero1 = { {"-----------------------------------------"},
                                                 {"|    |    |    |    |    |    |    |    |"},
                                                 {"|    |    |    |    |    |    |    |    |"},
@@ -70,16 +68,6 @@ public class Main {
                                                 {"-----------------------------------------"}};
 
 
-
-
-
-
-
-                        //llenado para entender de como se ingresa
-                        int nFilas = tablero.length;
-                        int nColumna = tablero[0].length;
-
-//
 //                        }
                         for (int i = 0; i < tablero1.length; i++) {
                             //System.out.print("|");
@@ -127,7 +115,7 @@ public class Main {
                 } catch(InputMismatchException e){
                     System.out.println("¡¡¡Debes insertar un número!!!");
                     // utilizar el nombre de la variable de entrada, y solo .next para que jale bien el trycatch
-                    entrada.next();
+                   entrada.next();
 
                 }
             } while (!salir) ;
