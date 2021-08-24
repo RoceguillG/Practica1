@@ -1,6 +1,7 @@
 package com.company;
 
 import jdk.swing.interop.SwingInterOpUtils;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -32,22 +33,88 @@ public class Main {
 
                 switch (opcion) {
                     case 1:
-                        System.out.println("INIO DELL JEUGO  ");
+                        System.out.println("INiCIO DeL JUeGO\n  ");
+                        //inicio del tablero vveamos como queda
+                        int[][] tablero = { {1, 2, 3, 4, 5, 6, 7, 8},
+                                            {2, 4, 3, 4, 4, 1, 1, 1},
+                                            {3, 0, 3, 4, 4, 1, 1, 1},
+                                            {4, 1, 3, 4, 4, 1, 1, 1},
+                                            {5, 1, 3, 4, 4, 1, 1, 1},
+                                            {6, 2, 3, 4, 4, 1, 1, 1},
+                                            {7, 3, 3, 3, 4, 1, 1, 1},
+                                            {8, 0, 0, 0, 4, 1, 1, 1}};
+                        String[][] tablero1 = { {"-----------------------------------------"},
+                                                {"|    |    |    |    |    |    |    |    |"},
+                                                {"|    |    |    |    |    |    |    |    |"},
+                                                {"-----------------------------------------"},
+                                                {"|    |    |    |    |    |    |    |    |"},
+                                                {"|    |    |    |    |    |    |    |    |"},
+                                                {"-----------------------------------------"},
+                                                {"|    |    |    |    |    |    |    |    |"},
+                                                {"|    |    |    |    |    |    |    |    |"},
+                                                {"-----------------------------------------"},
+                                                {"|    |    |    |    |    |    |    |    |"},
+                                                {"|    |    |    |    |    |    |    |    |"},
+                                                {"-----------------------------------------"},
+                                                {"|    |    |    |    |    |    |    |    |"},
+                                                {"|    |    |    |    |    |    |    |    |"},
+                                                {"-----------------------------------------"},
+                                                {"|    |    |    |    |    |    |    |    |"},
+                                                {"|    |    |    |    |    |    |    |    |"},
+                                                {"-----------------------------------------"},
+                                                {"|    |    |    |    |    |    |    |    |"},
+                                                {"|    |    |    |    |    |    |    |    |"},
+                                                {"-----------------------------------------"},
+                                                {"|    |    |    |    |    |    |    |    |"},
+                                                {"|    |    |    |    |    |    |    |    |"},
+                                                {"-----------------------------------------"}};
+
+
+
+
+
+
+
+                        //llenado para entender de como se ingresa
+                        int nFilas = tablero.length;
+                        int nColumna = tablero[0].length;
+
+//
+//                        }
+                        for (int i = 0; i < tablero1.length; i++) {
+                            //System.out.print("|");
+                            for (int j = 0; j < tablero1[0].length; j++) {
+                                System.out.print(tablero1[i][j] + "");
+//                               if(j!= tablero[i].length-1);
+//                                    System.out.println("\t");
+                            }
+                            System.out.print("\n");
+                        }
+
+
+                        System.out.println("");
+                        System.out.println("");
+                        System.out.println("");
+                        System.out.println("");
+                        System.out.println("");
+                        System.out.println("");
+                        System.out.println("");
+                        System.out.println("");
 
 
                         break;
                     case 2:
-                        System.out.println("RENAUDAR JUEGO");
+                        System.out.println("RENaUDAR JUeGO");
 
                         break;
                     case 3:
-                        System.out.println("REPORTES");
+                        System.out.println("REPoRTES");
                         break;
                     case 4:
 
                         salir = true;
 
-                        System.out.println("SALIR DEL JUEGO");
+                        System.out.println("SAlIR DeL JUeGO");
 
                         System.out.println("Has salido exitosamente del juego!");
                         break;
@@ -57,14 +124,14 @@ public class Main {
                         break;
                 }
 
-            } catch (InputMismatchException e) {
-                System.out.println("¡¡¡Debes insertar un número!!!");
-               // utilizar el nombre de la variable de entrada, y solo .next para que jale bien el trycatch
-                entrada.next();
+                } catch(InputMismatchException e){
+                    System.out.println("¡¡¡Debes insertar un número!!!");
+                    // utilizar el nombre de la variable de entrada, y solo .next para que jale bien el trycatch
+                    entrada.next();
 
-            }
-        } while (!salir);
+                }
+            } while (!salir) ;
 
 
+        }
     }
-}
