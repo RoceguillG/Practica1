@@ -84,7 +84,27 @@ public class Main {
                         //@
                         tablero[23][2] = 64;
 
-                        //                        }
+                        // 4  9  14  19  24  29  34  39       2  5  8  11  14  17  20  23
+                        // 1  2   3   4   5   6   7  8        1  2  3   4   5   6   7   8
+                        //suma 5,10,15                    suma 3,6,9..
+                        //+(5*i)                            +(3*i)
+                        //el random de las penalizaciones
+
+                        int Cp = (int) ((Math.random() * 8));
+                        int Fp = (int) ((Math.random() * 8));
+
+                        for (int a = 0; a < 5; a++) {
+
+                            for (int j = 0; j < 9; j++) {
+
+                                int c = 4 + (5 * (int) (Math.random() * 9));
+                                int f = 2 + (3 * (int) (Math.random() * 9));
+                                tablero[f][c] = 35;
+//                                    tablero[Fp][Cp] = 35;
+
+                            }
+                        }
+
 
                         for (int i = 0; i < tablero.length; i++) {
                             //System.out.print("|");
@@ -95,26 +115,18 @@ public class Main {
                             }
                             System.out.print("\n");
                         }
-
                         //el random de las penalizaciones
 
-
-                        // 4,9,14,19
-                        //suma 5,10,15
-                        //+(5*i)
-                        for (int i = 0; i < 8; i++) {
-                            int n = 4 + (5 * i);
-                            tablero[23][n] = (char) (49 + i);
-                            
-                        }
 
                         // System.out.println(jugador);
 
 
                         // dadito ranrandom
-                        int lanzamiento = (int) (Math.random() * 6 + 1);
+                        int lanzamiento = (int) (Math.random() * 5 + 2);
                         System.out.println(lanzamiento);
-                        //sistema de juego que de alguna manera tienen que salir y no usar el case2.
+
+
+//                        //sistema de juego que de alguna manera tienen que salir y no usar el case2.
 
 
                         //int opcion =3;
@@ -129,10 +141,11 @@ public class Main {
 //
 
 
-
                         break;
                     case 3:
                         System.out.println("REPoRTES");
+
+
                         break;
                     case 4:
 
