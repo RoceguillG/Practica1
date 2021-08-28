@@ -2,14 +2,13 @@
 
 package com.company;
 
-import jdk.swing.interop.SwingInterOpUtils;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
 
     public static int avanzar;
+    public static char tablero[][];
 
     public static void main(String[] args) {
         //menu inicial
@@ -79,7 +78,7 @@ public class Main {
 /*[22][]*/                                {124, 32, 32, 32, 49, 124, 32, 32, 32, 50, 124, 32, 32, 32, 51, 124, 32, 32, 32, 52, 124, 32, 32, 32, 53, 124, 32, 32, 32, 54, 124, 32, 32, 32, 55, 124, 32, 32, 32, 56, 124},
 /*[23][]*/                                {124, 32, 32, 32, 32, 124, 32, 32, 32, 32, 124, 32, 32, 32, 32, 124, 32, 32, 32, 32, 124, 32, 32, 32, 32, 124, 32, 32, 32, 32, 124, 32, 32, 32, 32, 124, 32, 32, 32, 32, 124},
 /*[24][]*/                                {45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45},
-                                /*[0][0]   1   2   3   4    5   6  7   */
+                                /*[0][0]   0    1   2   3   4    5   6  7   */
                         };
 // los numero que salen en el tablero son html, probar en consola real si sirve...
 
@@ -149,53 +148,55 @@ public class Main {
                                 System.out.println("Deseas avanzar? si = 1, no = 0");
                                 avanzar = entrada.nextInt();
 
+                                dado(avanzar);
 
                                 System.out.println("TIRANDO EL DADO ... \n" + "EL NÚMERO DEL DADO ES: " + lanzamiento);
 
-                                //luego que tire dado, el jugador avanzara x numero hacia delante del vector
-                                //este es el primero movimiento
+ //luego que tire dado, el jugador avanzara x numero hacia delante del vector
+      //este es el primero movimiento
 
-                                tablero[23][2] = 32; // casilla vacia
-                                tablero[23][2 + lanzamiento] = 49;
+                                tablero[23][4] = 32; // casilla vacia
+                                tablero[23][(2+5*lanzamiento)] = 64;
+
+//vuelve a imprimir el tablerote, con el jugador ya movido el primero mov :D
+
+                                for (int i = 0; i < tablero.length; i++) {
+                                    //System.out.print("|");
+                                    for (int j = 0; j < tablero[0].length; j++) {
+                                        System.out.print(tablero[i][j] + "");
+//                               if(j!= tablero[i].length-1);
+//                                    System.out.println("\t")
+                                    }
+                                    System.out.print("\n");
+                                }
+//verifica si jugador ha caido en pena
+                                
                                 for (int i = 0; i < 8; i++) {
-                                    //for (int j = 0; j < tablero.length; j++) {
+                                    //for (int j = 0; j < tablero.length; j++) {\
+
+                                    //las primeras 2 filas facil
+                                    if (tablero[23][i] == 35) {
+                                        System.out.println("¡Has caído en una penalización!");
+                                        System.out.println("Deberas realizar una prueba!!");
+                                        //prueba al azar primera, segunda, tercera
+                                        //reconocidad       1       2       3
 
 
-                                        switch (tablero[23][i]) {
-                                            case 35:
-                                                System.out.println("¡Has caído en una penalización!");
-                                                System.out.println("Deberas realizar una prueba!!");
-                                                //prueba al azar facil, media, dificil
-                                                //reconocidad     1       2       3
-                                                int prueba =(int) (Math.random() * 3+1);
-                                                System.out.println("Realizara una prueba de dificultad: " +prueba);
-                                                if (prueba == 3) {
-                                                    System.out.println("PRUEBA DIFICIL\n DIVICION DE MATRICES");
-                                                    //opcion 1
+                                        int prueba = (int) (Math.random() * 3 + 1);
+                                        System.out.println("Realizara una prueba de dificultad: " + prueba);
 
-                                                    
+                                    }
+                                    //debe lanzar el dado de nuevo
+                                    // luego debe recorrer de nuevo y ver si hay otra #
 
+                                    //las 3 filas siguientes medio
+//
+//                                    if (tablero == null) {
+//
+//                                    }
 
 
-
-
-                                                }if (prueba == 2) {
-                                                    System.out.println("PRUEBA FACIL");
-
-                                                }if (prueba == 1) {
-                                                    System.out.println("PRUEBA FACIL");
-
-                                                }
-
-
-
-
-
-                                                break;
-                                        }
-
-
-                                   // }
+                                    // }
                                 }
                                 System.out.println("juego ha quedado en pausa");
 
@@ -205,7 +206,7 @@ public class Main {
                                 // utilizar el nombre de la variable de entrada, y solo .next para que jale bien el trycatch
                                 entrada.next();
                             }
-                        k++;
+                            k++;
                         } while (k < 1);
 
 
@@ -218,7 +219,7 @@ public class Main {
                         // si y solo si el juego no ha terminado
                         System.out.println("RENaUDAR JUeGO");
 //                        if (casiila_usada <=64) {
-//
+                        tablero();
 //
 
 
@@ -227,8 +228,8 @@ public class Main {
                         System.out.println("REPoRTES");
 //usando 3 decimales!!!
                         double d = 7435.9876;
-                        double roundDbl = Math.round(d*1000.0)/1000.0;
-                        System.out.println("Rounded Double value: "+roundDbl);
+                        double roundDbl = Math.round(d * 1000.0) / 1000.0;
+                        System.out.println("Rounded Double value: " + roundDbl);
 
                         break;
                     case 4:
@@ -257,9 +258,30 @@ public class Main {
     }
 
 
-    public void tablero() {
-        System.out.println("gjk");
+    public static void dado(int var) {
+        if (var == 1) {
+            int lanzamiento = (int) (Math.random() * 5 + 2);
+            //System.out.println(lanzamiento);
+        }
     }
+
+    public static void tablero() {
+
+        System.out.println("Este es tu tablero");
+        for (int i = 0; i < tablero.length; i++) {
+            //System.out.print("|");
+            for (int j = 0; j < tablero[0].length; j++) {
+                System.out.print(tablero[i][j] + "");
+//                               if(j!= tablero[i].length-1);
+//                                    System.out.println("\t")
+            }
+            System.out.print("\n");
+        }
+
+
+    }
+
+
 }
 
 
