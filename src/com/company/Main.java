@@ -9,6 +9,8 @@ import java.util.Scanner;
 
 public class Main {
 
+    public static int avanzar;
+
     public static void main(String[] args) {
         //menu inicial
         //inicio del menu
@@ -98,31 +100,28 @@ public class Main {
 
 //if que me recorre las filas 2, 5, 11.. 23, pero solo lo recorre 1 vez
 
-
+// if y fors para poner las penalizaciones randoms
                         for (int i = 0; i < 8; i++) {
                             tablero[2 + (3 * i)][4 + (5 * (int) (Math.random() * 4))] = 35;
-                            tablero[2 + (3 * i)][4 + (5 * (int) (Math.random() * 4+4))] = 35;
-                            }
+                            tablero[2 + (3 * i)][4 + (5 * (int) (Math.random() * 4 + 4))] = 35;
+                        }
 
                         if (tablero[23][4] == 35) {
                             tablero[23][4] = 32;
 
                             tablero[23][9 + (5 * (int) (Math.random() * 8))] = 35;
                         }
-                        for (int i = 0; i < (int) ((Math.random() * 3+2)); i++) {
+                        for (int i = 0; i < (int) ((Math.random() * 3 + 2)); i++) {
                             tablero[2 + (3 * i)][4 + (5 * (int) (Math.random() * 8))] = 35;
 
                         }
-                        for (int i = 5; i < (int) ((Math.random() * 3+6)); i++) {
+                        for (int i = 5; i < (int) ((Math.random() * 3 + 6)); i++) {
                             tablero[2 + (3 * i)][4 + (5 * (int) (Math.random() * 8))] = 35;
                             tablero[2 + (3 * i)][4 + (5 * (int) (Math.random() * 8))] = 35;
 
                         }
 
-
-
-
-
+                        //core el tablero en pantalla
                         for (int i = 0; i < tablero.length; i++) {
                             //System.out.print("|");
                             for (int j = 0; j < tablero[0].length; j++) {
@@ -133,27 +132,84 @@ public class Main {
                             System.out.print("\n");
                         }
 
-                        //el random de las penalizaciones
+//el random de las penalizaciones
 
-
-                        // 4,9,14,19
-                        //suma 5,10,15
-                        //+(5*i)
-                        for (int i = 0; i < 8; i++) {
-                            int n = 4 + (5 * i);
-                            tablero[23][n] = (char) (49 + i);
-
-                        }
 
                         // System.out.println(jugador);
 
 
                         // dadito ranrandom
-                        int lanzamiento = (int) (Math.random() * 5+ 2);
-                        System.out.println(lanzamiento);
-                        //sistema de juego que de alguna manera tienen que salir y no usar el case2.
+                        int lanzamiento = (int) (Math.random() * 5 + 2);
+
+                        int k = 0;
+                        do {
+                            System.out.println("El Juego ha comenzado");
+                            try {
+
+                                System.out.println("Deseas avanzar? si = 1, no = 0");
+                                avanzar = entrada.nextInt();
 
 
+                                System.out.println("TIRANDO EL DADO ... \n" + "EL NÚMERO DEL DADO ES: " + lanzamiento);
+
+                                //luego que tire dado, el jugador avanzara x numero hacia delante del vector
+                                //este es el primero movimiento
+
+                                tablero[23][2] = 32; // casilla vacia
+                                tablero[23][2 + lanzamiento] = 49;
+                                for (int i = 0; i < 8; i++) {
+                                    //for (int j = 0; j < tablero.length; j++) {
+
+
+                                        switch (tablero[23][i]) {
+                                            case 35:
+                                                System.out.println("¡Has caído en una penalización!");
+                                                System.out.println("Deberas realizar una prueba!!");
+                                                //prueba al azar facil, media, dificil
+                                                //reconocidad     1       2       3
+                                                int prueba =(int) (Math.random() * 3+1);
+                                                System.out.println("Realizara una prueba de dificultad: " +prueba);
+                                                if (prueba == 3) {
+                                                    System.out.println("PRUEBA DIFICIL\n DIVICION DE MATRICES");
+                                                    //opcion 1
+
+                                                    
+
+
+
+
+
+                                                }if (prueba == 2) {
+                                                    System.out.println("PRUEBA FACIL");
+
+                                                }if (prueba == 1) {
+                                                    System.out.println("PRUEBA FACIL");
+
+                                                }
+
+
+
+
+
+                                                break;
+                                        }
+
+
+                                   // }
+                                }
+                                System.out.println("juego ha quedado en pausa");
+
+
+                            } catch (InputMismatchException e) {
+                                System.out.println("¡¡¡Debes insertar un número!!!");
+                                // utilizar el nombre de la variable de entrada, y solo .next para que jale bien el trycatch
+                                entrada.next();
+                            }
+                        k++;
+                        } while (k < 1);
+
+
+                        //sistema de juego que de alguna manera tienen que salir y no usar el case2
                         //int opcion =3;
                         System.out.println("EL JUEGO HA TERMINADO");
 
@@ -169,6 +225,11 @@ public class Main {
                         break;
                     case 3:
                         System.out.println("REPoRTES");
+//usando 3 decimales!!!
+                        double d = 7435.9876;
+                        double roundDbl = Math.round(d*1000.0)/1000.0;
+                        System.out.println("Rounded Double value: "+roundDbl);
+
                         break;
                     case 4:
 
@@ -194,4 +255,11 @@ public class Main {
 
 
     }
+
+
+    public void tablero() {
+        System.out.println("gjk");
+    }
 }
+
+
